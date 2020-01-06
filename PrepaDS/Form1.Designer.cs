@@ -33,7 +33,7 @@
             this.NumeroEquipe = new System.Windows.Forms.Label();
             this.NomEquipe = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.Lbl_NbrJoueur = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.Btn_EquipeAjouter = new System.Windows.Forms.Button();
             this.Btn_EquipeModifier = new System.Windows.Forms.Button();
@@ -45,6 +45,7 @@
             this.Txt_NumeroEquipe = new System.Windows.Forms.TextBox();
             this.Txt_NomEquipe = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.Txt_NbrJoueur = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.DGV_1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DGV_2)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -58,6 +59,7 @@
             this.DGV_1.Name = "DGV_1";
             this.DGV_1.Size = new System.Drawing.Size(323, 171);
             this.DGV_1.TabIndex = 0;
+            this.DGV_1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGV_1_CellClick);
             // 
             // DGV_2
             // 
@@ -75,7 +77,7 @@
             this.NumeroEquipe.Name = "NumeroEquipe";
             this.NumeroEquipe.Size = new System.Drawing.Size(86, 13);
             this.NumeroEquipe.TabIndex = 2;
-            this.NumeroEquipe.Text = "Numero Equipe :";
+            this.NumeroEquipe.Text = "Nombre Equipe :";
             // 
             // NomEquipe
             // 
@@ -95,14 +97,14 @@
             this.label4.TabIndex = 4;
             this.label4.Text = "label3";
             // 
-            // label3
+            // Lbl_NbrJoueur
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 211);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(35, 13);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "label3";
+            this.Lbl_NbrJoueur.AutoSize = true;
+            this.Lbl_NbrJoueur.Location = new System.Drawing.Point(14, 132);
+            this.Lbl_NbrJoueur.Name = "Lbl_NbrJoueur";
+            this.Lbl_NbrJoueur.Size = new System.Drawing.Size(159, 13);
+            this.Lbl_NbrJoueur.TabIndex = 5;
+            this.Lbl_NbrJoueur.Text = "Nombre joueur de cette equipe :";
             // 
             // label5
             // 
@@ -125,7 +127,7 @@
             // 
             // Btn_EquipeModifier
             // 
-            this.Btn_EquipeModifier.Location = new System.Drawing.Point(325, 68);
+            this.Btn_EquipeModifier.Location = new System.Drawing.Point(325, 58);
             this.Btn_EquipeModifier.Name = "Btn_EquipeModifier";
             this.Btn_EquipeModifier.Size = new System.Drawing.Size(75, 23);
             this.Btn_EquipeModifier.TabIndex = 8;
@@ -135,7 +137,7 @@
             // 
             // Btn_EquipeSupprimer
             // 
-            this.Btn_EquipeSupprimer.Location = new System.Drawing.Point(325, 108);
+            this.Btn_EquipeSupprimer.Location = new System.Drawing.Point(325, 87);
             this.Btn_EquipeSupprimer.Name = "Btn_EquipeSupprimer";
             this.Btn_EquipeSupprimer.Size = new System.Drawing.Size(75, 23);
             this.Btn_EquipeSupprimer.TabIndex = 9;
@@ -200,12 +202,14 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.Txt_NbrJoueur);
             this.groupBox1.Controls.Add(this.Txt_NomEquipe);
             this.groupBox1.Controls.Add(this.NumeroEquipe);
             this.groupBox1.Controls.Add(this.Txt_NumeroEquipe);
             this.groupBox1.Controls.Add(this.NomEquipe);
             this.groupBox1.Controls.Add(this.Btn_EquipeAjouter);
             this.groupBox1.Controls.Add(this.Btn_EquipeModifier);
+            this.groupBox1.Controls.Add(this.Lbl_NbrJoueur);
             this.groupBox1.Controls.Add(this.Btn_EquipeSupprimer);
             this.groupBox1.Location = new System.Drawing.Point(15, 22);
             this.groupBox1.Name = "groupBox1";
@@ -213,6 +217,14 @@
             this.groupBox1.TabIndex = 16;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Equipes :";
+            // 
+            // Txt_NbrJoueur
+            // 
+            this.Txt_NbrJoueur.Enabled = false;
+            this.Txt_NbrJoueur.Location = new System.Drawing.Point(200, 125);
+            this.Txt_NbrJoueur.Name = "Txt_NbrJoueur";
+            this.Txt_NbrJoueur.Size = new System.Drawing.Size(111, 20);
+            this.Txt_NbrJoueur.TabIndex = 16;
             // 
             // Application
             // 
@@ -225,7 +237,6 @@
             this.Controls.Add(this.Btn_PrecedentEquipe);
             this.Controls.Add(this.Btn_PremierEquipe);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.DGV_2);
             this.Controls.Add(this.DGV_1);
@@ -248,7 +259,7 @@
         private System.Windows.Forms.Label NumeroEquipe;
         private System.Windows.Forms.Label NomEquipe;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label Lbl_NbrJoueur;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button Btn_EquipeAjouter;
         private System.Windows.Forms.Button Btn_EquipeModifier;
@@ -260,6 +271,7 @@
         private System.Windows.Forms.TextBox Txt_NumeroEquipe;
         private System.Windows.Forms.TextBox Txt_NomEquipe;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.TextBox Txt_NbrJoueur;
     }
 }
 

@@ -22,7 +22,7 @@ namespace PrepaDS
         {
             A.CONNECTER();
             DGV_Equipe_Load();
-            DGV_Joueur_Load();
+            //DGV_Joueur_Load();
         }
 
         public void DGV_Equipe_Load() // Chargement du DGV
@@ -37,6 +37,7 @@ namespace PrepaDS
             A.DT_1.Load(A.Rd);
             DGV_1.DataSource = A.DT_1;
             A.Rd.Close();
+            Txt_NumeroEquipe.Text = EquipeCount().ToString();
         }
         public void DGV_Joueur_Load() // Chargement du DGV
         {
@@ -44,7 +45,7 @@ namespace PrepaDS
             {
                 A.DT_2.Clear();
             }
-            A.Comm.CommandText = "Select * from Joueur";
+            A.Comm.CommandText = "Select * from Joueur Where Joueur.NoEquipe='" + DGV_1.CurrentCell.Value.ToString() + "';";
             A.Comm.Connection = A.Connex;
             A.Rd = A.Comm.ExecuteReader();
             A.DT_2.Load(A.Rd);
@@ -56,18 +57,37 @@ namespace PrepaDS
             float F;
             return float.TryParse(s, out F);
         }
+        public int EquipeCount() // Fonction pour affiche le dernier ID enregistrer
+        {
+            int B;
+            A.Comm.CommandText = "Select MAX(NoEquipe) from Equipe ";
+            A.Comm.Connection = A.Connex;
+            B = (int)A.Comm.ExecuteScalar();
+            return B;
+        }
+        public int JoueurCount() // Fonction pour affiche le dernier ID enregistrer
+        {
+            int B;
+            A.Comm.CommandText = "Select count(NoJoueur) from Joueur Where Joueur.NoEquipe='"+DGV_1.CurrentCell.Value.ToString()+"';";
+            A.Comm.Connection = A.Connex;
+            B = (int)A.Comm.ExecuteScalar();
+            return B;
+
+        }
+
         private void Btn_EquipeAjouter_Click(object sender, EventArgs e)
         {
             if (Txt_NomEquipe.Text == "")
             {
                 MessageBox.Show("Merci de Remplir tous les champs !", "Erreur Saisie", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-            else { 
-            A.Comm.CommandText = "insert into Equipe values('"+ Txt_NomEquipe.Text+"');";
-            A.Comm.Connection = A.Connex;
-            A.Comm.ExecuteNonQuery();
-            DGV_Equipe_Load();// Mise a jour de l'affichage DGV
-        }
+            else
+            {
+                A.Comm.CommandText = "insert into Equipe values('" + Txt_NomEquipe.Text + "');";
+                A.Comm.Connection = A.Connex;
+                A.Comm.ExecuteNonQuery();
+                DGV_Equipe_Load();// Mise a jour de l'affichage DGV
+            }
         }
 
         private void Btn_EquipeModifier_Click(object sender, EventArgs e)
@@ -142,6 +162,13 @@ namespace PrepaDS
         {
             int A = DGV_1.Rows.Count - 1;
             DGV_1.CurrentCell = DGV_1.Rows[A].Cells[DGV_1.CurrentCell.ColumnIndex];
+
+        }
+
+        private void DGV_1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            Txt_NbrJoueur.Text = JoueurCount().ToString();
+            DGV_Joueur_Load();
         }
     }
 }
