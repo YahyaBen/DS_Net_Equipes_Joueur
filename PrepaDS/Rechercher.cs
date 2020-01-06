@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -39,6 +40,29 @@ namespace PrepaDS
                 A.Rd.Close();
             }
             else MessageBox.Show("Merci de Rechercher par Nom!", "Erreur Saisie", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        }
+        // ------------------------------------------------
+        //
+        //
+        //
+        private void Btn_Print_Click(object sender, EventArgs e)
+        {
+            PrintDialog B =new PrintDialog();
+            B.Document = printDoc;
+            B.UseEXDialog = true;
+            if (DialogResult.OK == B.ShowDialog())
+            {
+                printDoc.Print();
+            }
+
+        }
+
+        private void printDoc_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+            Bitmap A = new Bitmap(this.DGV_Recherche.Width, this.DGV_Recherche.Height);
+            DGV_Recherche.DrawToBitmap(A, new Rectangle(0, 0, this.DGV_Recherche.Width, this.DGV_Recherche.Height));
+            e.Graphics.DrawImage(A, 10, 10);
+
         }
     }
 }
