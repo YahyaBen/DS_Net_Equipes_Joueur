@@ -15,8 +15,8 @@ namespace PrepaDS
         public SqlCommand Comm = new SqlCommand();
         public SqlDataReader Rd;
 
-        public DataTable DT = new DataTable();
-
+        public DataTable DT_1 = new DataTable();// Les DataTable Sont unique pour chaque DGV
+        public DataTable DT_2 = new DataTable();
         // Declaration methode connecter 
         public void CONNECTER()
         {
