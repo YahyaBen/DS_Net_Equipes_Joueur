@@ -23,7 +23,6 @@ namespace PrepaDS
             A.CONNECTER();
             DGV_Equipe_Load();
             CB_Equipe_Load();
-            //DGV_Joueur_Load();
         }
 
         public void DGV_Equipe_Load() // Chargement du DGV
@@ -257,6 +256,12 @@ namespace PrepaDS
         private void Fermer_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void Btn_Recherche_Click(object sender, EventArgs e)
+        {
+            Rechercher R = new Rechercher();
+            R.ShowDialog();
         }
     }
 }

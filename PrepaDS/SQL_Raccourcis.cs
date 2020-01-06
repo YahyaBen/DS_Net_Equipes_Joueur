@@ -17,6 +17,7 @@ namespace PrepaDS
 
         public DataTable DT_1 = new DataTable();// Les DataTable Sont unique pour chaque DGV
         public DataTable DT_2 = new DataTable();
+        public DataTable DT_3 = new DataTable();
         // Declaration methode connecter 
         public void CONNECTER()
         {

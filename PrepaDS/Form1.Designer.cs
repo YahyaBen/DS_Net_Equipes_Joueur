@@ -58,6 +58,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.CB_Equipe = new System.Windows.Forms.ComboBox();
             this.Fermer = new System.Windows.Forms.Button();
+            this.Btn_Recherche = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.DGV_1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DGV_2)).BeginInit();
             this.Equipe.SuspendLayout();
@@ -232,6 +233,7 @@
             // 
             // Joueur
             // 
+            this.Joueur.Controls.Add(this.Btn_Recherche);
             this.Joueur.Controls.Add(this.CB_Equipe);
             this.Joueur.Controls.Add(this.label3);
             this.Joueur.Controls.Add(this.Txt_Sexe);
@@ -245,7 +247,7 @@
             this.Joueur.Controls.Add(this.Btn_JoueurSupprimer);
             this.Joueur.Location = new System.Drawing.Point(12, 217);
             this.Joueur.Name = "Joueur";
-            this.Joueur.Size = new System.Drawing.Size(432, 171);
+            this.Joueur.Size = new System.Drawing.Size(425, 194);
             this.Joueur.TabIndex = 17;
             this.Joueur.TabStop = false;
             this.Joueur.Text = "Joueurs :";
@@ -347,13 +349,23 @@
             // 
             // Fermer
             // 
-            this.Fermer.Location = new System.Drawing.Point(340, 394);
+            this.Fermer.Location = new System.Drawing.Point(580, 415);
             this.Fermer.Name = "Fermer";
             this.Fermer.Size = new System.Drawing.Size(75, 23);
             this.Fermer.TabIndex = 20;
             this.Fermer.Text = "Fermer";
             this.Fermer.UseVisualStyleBackColor = true;
             this.Fermer.Click += new System.EventHandler(this.Fermer_Click);
+            // 
+            // Btn_Recherche
+            // 
+            this.Btn_Recherche.Location = new System.Drawing.Point(152, 153);
+            this.Btn_Recherche.Name = "Btn_Recherche";
+            this.Btn_Recherche.Size = new System.Drawing.Size(75, 29);
+            this.Btn_Recherche.TabIndex = 21;
+            this.Btn_Recherche.Text = "Rechercher";
+            this.Btn_Recherche.UseVisualStyleBackColor = true;
+            this.Btn_Recherche.Click += new System.EventHandler(this.Btn_Recherche_Click);
             // 
             // Application
             // 
@@ -416,6 +428,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox CB_Equipe;
         private System.Windows.Forms.Button Fermer;
+        private System.Windows.Forms.Button Btn_Recherche;
     }
 }
 
